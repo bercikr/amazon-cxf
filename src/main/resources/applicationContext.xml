@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean
+		class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+
+	<bean id="amazonProperties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:amazon.properties" />
+	</bean>
+
+	<bean id="amazonAssociatesWebServiceAccount"
+		class="com.supervaca.pricewatch.domain.AmazonAssociatesWebServiceAccount">
+		<property name="awsAccessKeyId" value="${awsAccessKeyId}" />
+		<property name="associateTag" value="${associateTag}" />
+	</bean>
+
+	<bean id="awseCommerceService"
+		class="com.amazon.webservices.awsecommerceservice._2009_02_01.AWSECommerceService" />
+
+	<bean id="awseCommerceServicePort"
+		factory-bean="awseCommerceService"
+		factory-method="getAWSECommerceServicePort" />
+
+</beans>
