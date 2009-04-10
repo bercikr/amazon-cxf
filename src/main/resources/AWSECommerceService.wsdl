@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.amazon.com/AWSECommerceService/2008-06-26" targetNamespace="http://webservices.amazon.com/AWSECommerceService/2008-06-26">
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.amazon.com/AWSECommerceService/2009-02-01" targetNamespace="http://webservices.amazon.com/AWSECommerceService/2009-02-01">
     <types>
-		<xs:schema targetNamespace="http://webservices.amazon.com/AWSECommerceService/2008-06-26" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.amazon.com/AWSECommerceService/2008-06-26" elementFormDefault="qualified">
+		<xs:schema targetNamespace="http://webservices.amazon.com/AWSECommerceService/2009-02-01" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.amazon.com/AWSECommerceService/2009-02-01" elementFormDefault="qualified">
 	
 	        <xs:element name="Bin">
 	                <xs:complexType>
@@ -38,7 +38,7 @@
 			<xs:complexType>
 				<xs:sequence>
 					<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-	            			<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/> 
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -138,7 +138,7 @@
 			<xs:complexType>
 				<xs:sequence>
 	            			<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-	            			<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -194,7 +194,7 @@
 			<xs:complexType>
 				<xs:sequence>
 	            			<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-	            			<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -229,7 +229,7 @@
 			<xs:complexType>
 				<xs:sequence>
 	            			<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-	            			<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -266,8 +266,8 @@
 		<xs:element name="CustomerContentSearch">
 			<xs:complexType>
 				<xs:sequence>
-	            <xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-	            <xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
+					<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -288,8 +288,8 @@
 		<xs:element name="CustomerContentLookup">
 			<xs:complexType>
 				<xs:sequence>
-	            <xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-	            <xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
+					<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -312,8 +312,8 @@
 		<xs:element name="SimilarityLookup">
 			<xs:complexType>
 				<xs:sequence>
-	            <xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-	            <xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
+					<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -345,8 +345,8 @@
 		<xs:element name="SellerLookup">
 			<xs:complexType>
 				<xs:sequence>
-	            <xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-	            <xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
+					<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -366,8 +366,8 @@
 		<xs:element name="CartGet">
 			<xs:complexType>
 				<xs:sequence>
-	            <xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-	            <xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
+					<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -388,8 +388,8 @@
 		<xs:element name="CartAdd">
 			<xs:complexType>
 				<xs:sequence>
-	            <xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-	            <xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/> 
+					<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -435,8 +435,8 @@
 		<xs:element name="CartCreate">
 			<xs:complexType>
 				<xs:sequence>
-	            <xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-	            <xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
+					<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -481,7 +481,7 @@
 			<xs:complexType>
 				<xs:sequence>
 	            			<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-	            			<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -525,7 +525,7 @@
 			<xs:complexType>
 				<xs:sequence>
 	            			<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-	            			<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -547,7 +547,7 @@
 			<xs:complexType>
 				<xs:sequence>
 	            			<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-	            			<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -599,7 +599,7 @@
 			<xs:complexType>
 				<xs:sequence>
 	            			<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-	            			<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -613,7 +613,7 @@
 			<xs:complexType>
 				<xs:sequence>
 	            			<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-	            			<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -654,7 +654,7 @@
 			<xs:complexType>
 				<xs:sequence>
 		        	    	<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
-					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>  
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/> 
 					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
 					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
 					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
@@ -667,6 +667,105 @@
 		<xs:complexType name="BrowseNodeLookupRequest">
 			<xs:sequence>
 				<xs:element name="BrowseNodeId" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="ResponseGroup" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:element name="VehicleSearch">
+			<xs:complexType>
+				<xs:sequence>
+		        	    	<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/>
+					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
+					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
+					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
+					<xs:element name="XMLEscaping" type="xs:string" minOccurs="0"/>
+					<xs:element name="Shared" type="tns:VehicleSearchRequest" minOccurs="0"/>
+					<xs:element name="Request" type="tns:VehicleSearchRequest" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:complexType name="VehicleSearchRequest">
+			<xs:sequence>
+				<xs:element name="Year" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="MakeId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="ModelId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="TrimId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="ResponseGroup" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:element name="VehiclePartSearch">
+			<xs:complexType>
+				<xs:sequence>
+		        	    	<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/> 
+					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
+					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
+					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
+					<xs:element name="XMLEscaping" type="xs:string" minOccurs="0"/>
+					<xs:element name="Shared" type="tns:VehiclePartSearchRequest" minOccurs="0"/>
+					<xs:element name="Request" type="tns:VehiclePartSearchRequest" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:complexType name="VehiclePartSearchRequest">
+			<xs:sequence>
+				<xs:element name="Year" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="MakeId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="ModelId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="TrimId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="BedId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="BodyStyleId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="BrakesId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="DriveTypeId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="EngineId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="MfrBodyCodeId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="SpringTypesId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="SteeringId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="TransmissionId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="WheelbaseId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="BrowseNodeId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="Brand" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="Count" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="FromItemId" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="PartPageDirection" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="ResponseGroup" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:element name="VehiclePartLookup">
+			<xs:complexType>
+				<xs:sequence>
+		        	    	<xs:element name="MarketplaceDomain" type="xs:string" minOccurs="0"/>
+					<xs:element name="AWSAccessKeyId" type="xs:string" minOccurs="0"/> 
+					<xs:element name="SubscriptionId" type="xs:string" minOccurs="0"/>
+					<xs:element name="AssociateTag" type="xs:string" minOccurs="0"/>
+					<xs:element name="Validate" type="xs:string" minOccurs="0"/>
+					<xs:element name="XMLEscaping" type="xs:string" minOccurs="0"/>
+					<xs:element name="Shared" type="tns:VehiclePartLookupRequest" minOccurs="0"/>
+					<xs:element name="Request" type="tns:VehiclePartLookupRequest" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:complexType name="VehiclePartLookupRequest">
+			<xs:sequence>
+				<xs:element name="ItemId" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="IdType" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="Year" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="MakeId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="ModelId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="TrimId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="BedId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="BodyStyleId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="BrakesId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="DriveTypeId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="EngineId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="MfrBodyCodeId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="SpringTypesId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="SteeringId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="TransmissionId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="WheelbaseId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="BrowseNodeId" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="FitmentPage" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="FitmentCount" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
 				<xs:element name="ResponseGroup" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
@@ -729,6 +828,9 @@
 					<xs:element ref="tns:SellerListingLookup" minOccurs="0"/>
 					<xs:element ref="tns:TagLookup" minOccurs="0"/>
 					<xs:element ref="tns:BrowseNodeLookup" minOccurs="0"/>
+					<xs:element ref="tns:VehicleSearch" minOccurs="0"/>
+					<xs:element ref="tns:VehiclePartSearch" minOccurs="0"/>
+					<xs:element ref="tns:VehiclePartLookup" minOccurs="0"/>
 				</xs:sequence>
 			</xs:complexType>
 		</xs:element>
@@ -884,6 +986,30 @@
 				</xs:sequence>
 			</xs:complexType>
 		</xs:element>
+		<xs:element name="VehicleSearchResponse">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:OperationRequest" minOccurs="0"/>
+					<xs:element ref="tns:VehicleYears" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehiclePartSearchResponse">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:OperationRequest" minOccurs="0"/>
+					<xs:element ref="tns:VehicleParts" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehiclePartLookupResponse">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:OperationRequest" minOccurs="0"/>
+					<xs:element ref="tns:VehicleParts" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
 		<xs:element name="MultiOperationResponse">
 			<xs:complexType>
 				<xs:sequence>
@@ -907,6 +1033,9 @@
 					<xs:element ref="tns:SellerListingLookupResponse" minOccurs="0"/>
 					<xs:element ref="tns:TagLookupResponse" minOccurs="0"/>
 					<xs:element ref="tns:BrowseNodeLookupResponse" minOccurs="0"/>
+					<xs:element ref="tns:VehicleSearchResponse" minOccurs="0"/>
+					<xs:element ref="tns:VehiclePartSearchResponse" minOccurs="0"/>
+					<xs:element ref="tns:VehiclePartLookupResponse" minOccurs="0"/>
 				</xs:sequence>
 			</xs:complexType>
 		</xs:element>
@@ -944,6 +1073,9 @@
 					<xs:element name="SellerListingLookupRequest" type="tns:SellerListingLookupRequest" minOccurs="0"/>
 					<xs:element name="SellerLookupRequest" type="tns:SellerLookupRequest" minOccurs="0"/>
 					<xs:element name="TagLookupRequest" type="tns:TagLookupRequest" minOccurs="0"/>
+					<xs:element name="VehicleSearchRequest" type="tns:VehicleSearchRequest" minOccurs="0"/>
+					<xs:element name="VehiclePartSearchRequest" type="tns:VehiclePartSearchRequest" minOccurs="0"/>
+					<xs:element name="VehiclePartLookupRequest" type="tns:VehiclePartLookupRequest" minOccurs="0"/>
 					<xs:element ref="tns:Errors" minOccurs="0"/>
 				</xs:sequence>
 			</xs:complexType>
@@ -1165,6 +1297,7 @@
 					<xs:element name="TotalItems" type="xs:nonNegativeInteger" minOccurs="0"/>
 					<xs:element name="TotalPages" type="xs:nonNegativeInteger" minOccurs="0"/>
 					<xs:element name="DateCreated" type="xs:string" minOccurs="0"/>
+					<xs:element name="LastModified" type="xs:string" minOccurs="0"/>
 					<xs:element name="OccasionDate" type="xs:string" minOccurs="0"/>
 					<xs:element name="CustomerName" type="xs:string" minOccurs="0"/>
 					<xs:element name="PartnerName" type="xs:string" minOccurs="0"/>
@@ -1473,6 +1606,14 @@
 					<xs:element name="MerchantId" type="xs:string"/>
 					<xs:element name="Name" type="xs:string" minOccurs="0"/>
 					<xs:element name="GlancePage" type="xs:string" minOccurs="0"/>
+	                                <xs:element name="Location" minOccurs="0">
+	                                        <xs:complexType>
+	                                                <xs:sequence>
+	                                                        <xs:element name="CountryCode" type="xs:string" minOccurs="0"/>
+	                                                        <xs:element name="StateCode" type="xs:string" minOccurs="0"/>
+	                                                </xs:sequence>
+	                                        </xs:complexType>
+	                                </xs:element>
 	                                <xs:element name="AverageFeedbackRating" type="xs:decimal" minOccurs="0"/>
 	                                <xs:element name="TotalFeedback" type="xs:nonNegativeInteger" minOccurs="0"/>
 	                                <xs:element name="TotalFeedbackPages" type="xs:nonNegativeInteger" minOccurs="0"/>
@@ -1500,10 +1641,18 @@
 						</xs:complexType>
 					</xs:element>
 					<xs:element name="Quantity" type="xs:integer" minOccurs="0"/>
+					<xs:element name="QuantityRestriction" minOccurs="0">
+					    <xs:complexType>
+							<xs:sequence>
+							    <xs:element name="QuantityLimit" type="xs:integer" minOccurs="0"/>
+							</xs:sequence>
+					    </xs:complexType>
+					</xs:element>
 					<xs:element name="ISPUStoreAddress" type="tns:Address" minOccurs="0"/>
 					<xs:element name="ISPUStoreHours" type="xs:string" minOccurs="0"/>
 					<xs:element name="IsEligibleForSuperSaverShipping" type="xs:boolean" minOccurs="0"/>
 					<xs:element name="IsEligibleForPrime" type="xs:boolean" minOccurs="0"/>
+					<xs:element name="IsMapViolated" type="xs:boolean" minOccurs="0"/>
 	                                <xs:element name="SalesRestriction" type="xs:string" minOccurs="0"/>
 	                                <xs:element name="ShippingCharge" minOccurs="0" maxOccurs="unbounded">
 	                                	<xs:annotation>
@@ -1858,6 +2007,331 @@
 				<xs:element name="IsInEligibilityRequirementSet" type="xs:boolean"/>
 			</xs:sequence>
 		</xs:complexType>
+		<xs:element name="VehicleYears">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:Request" minOccurs="0"/>
+					<xs:element ref="tns:VehicleYear" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleYear">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="Year" type="xs:nonNegativeInteger" maxOccurs="1"/>
+					<xs:element name="IsValid" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tns:VehicleMakes" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleMakes">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:VehicleMake" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleMake">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="MakeName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="MakeId" type="xs:nonNegativeInteger" maxOccurs="1"/>
+					<xs:element name="IsValid" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tns:VehicleModels" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleModels">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:VehicleModel" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleModel">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="ModelName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="ModelId" type="xs:nonNegativeInteger" maxOccurs="1"/>
+					<xs:element name="IsValid" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tns:VehicleTrims" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleTrims">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:VehicleTrim" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleTrim">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="TrimName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="TrimId" type="xs:nonNegativeInteger" maxOccurs="1"/>
+					<xs:element name="IsValid" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tns:VehicleOptions" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleOptions">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:VehicleBedOptions" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tns:VehicleBodyStyleOptions" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tns:VehicleBrakesOptions" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tns:VehicleDriveTypeOptions" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tns:VehicleEngineOptions" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tns:VehicleMfrBodyCodeOptions" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tns:VehicleSpringTypesOptions" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tns:VehicleSteeringOptions" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tns:VehicleTransmissionOptions" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tns:VehicleWheelbaseOptions" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleBedOptions">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:VehicleBed" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleBed">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="BedName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="BedId" type="xs:nonNegativeInteger" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleBodyStyleOptions">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:VehicleBodyStyle" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleBodyStyle">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="BodyStyleName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="BodyStyleId" type="xs:nonNegativeInteger" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleBrakesOptions">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:VehicleBrakes" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleBrakes">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="BrakesName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="BrakesId" type="xs:nonNegativeInteger" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleDriveTypeOptions">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:VehicleDriveType" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleDriveType">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="DriveTypeName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="DriveTypeId" type="xs:nonNegativeInteger" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleEngineOptions">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:VehicleEngine" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleEngine">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="EngineName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="EngineId" type="xs:nonNegativeInteger" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleMfrBodyCodeOptions">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:VehicleMfrBodyCode" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleMfrBodyCode">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="MfrBodyCodeName" type="xs:string" maxOccurs="1"/>
+					<xs:element name="MfrBodyCodeId" type="xs:nonNegativeInteger" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleSpringTypesOptions">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:VehicleSpringTypes" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleSpringTypes">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="SpringTypesName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="SpringTypesId" type="xs:nonNegativeInteger" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleSteeringOptions">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:VehicleSteering" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleSteering">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="SteeringName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="SteeringId" type="xs:nonNegativeInteger" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleTransmissionOptions">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:VehicleTransmission" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleTransmission">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="TransmissionName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="TransmissionId" type="xs:nonNegativeInteger" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleWheelbaseOptions">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:VehicleWheelbase" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleWheelbase">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="WheelbaseName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="WheelbaseId" type="xs:nonNegativeInteger" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehicleParts">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:Request" minOccurs="0"/>
+					<xs:element name="IsNext" type="xs:boolean" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="IsPrevious" type="xs:boolean" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tns:Part" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tns:MissingVehicleAttributes" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tns:PartBrowseNodeBins" minOccurs="0" />
+					<xs:element ref="tns:PartBrandBins" minOccurs="0" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="MissingVehicleAttributes">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="ParameterName" type="xs:string" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="PartBrowseNodeBins">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:Bin" minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="PartBrandBins">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:Bin" minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="Part">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="tns:Item" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="HasPartCompatibility" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+					<xs:element ref="tns:VehiclePartFit" minOccurs="0" maxOccurs="1" />
+					<xs:element ref="tns:Fitments" minOccurs="0" maxOccurs="1" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="VehiclePartFit">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="IsFit" type="xs:string" maxOccurs="1" />
+					<xs:element ref="tns:MissingVehicleAttributes" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="Fitments">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="TotalFitments" type="xs:nonNegativeInteger" />
+					<xs:element name="TotalPages" type="xs:nonNegativeInteger" />
+					<xs:element name="FitmentAttributes" type="xs:string" minOccurs="0" />
+					<xs:element ref="tns:Fitment" minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="FitmentAttributes">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="FitmentAttribute" type="xs:string" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="Fitment">
+			<xs:complexType>
+				<xs:sequence>
+				<xs:element name="Year" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="Make" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="Model" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="Trim" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="Bed" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="BodyStyle" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="Brakes" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="DriveType" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="Engine" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="MfrBodyCode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="SpringTypes" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="Steering" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="Transmission" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="Wheelbase" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="Position" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="Notes" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
 		<xs:element name="BrowseNodes">
 			<xs:complexType>
 				<xs:sequence>
@@ -2012,7 +2486,7 @@
 							        </aws-se:restricted>
 						        </xs:appinfo>
 					        </xs:annotation>
-	                                </xs:element>	    
+	                                </xs:element>    
 	                                <xs:element name="OrderingCustomerId" type="xs:string" minOccurs="0">
 					        <xs:annotation>
 						        <xs:appinfo>
@@ -2101,6 +2575,8 @@
 					<xs:element name="UnitPrice" type="tns:Price"/>
 					<xs:element name="TotalPrice" type="tns:Price"/>
 					<xs:element name="ASIN" type="xs:string" minOccurs="0"/>
+					<xs:element name="SKU" type="xs:string" minOccurs="0"/>
+					<xs:element name="Title" type="xs:string" minOccurs="0"/>
 					<xs:element name="ChildTransactionItems" minOccurs="0">
 						<xs:complexType>
 							<xs:sequence>
@@ -2124,7 +2600,7 @@
 	                     					</aws-se:restricted>
 	                  				</xs:appinfo>
 	               				</xs:annotation>
-	            			</xs:element>			
+	            			</xs:element>		
 	            			<xs:element name="Nickname" type="xs:string" minOccurs="0"/>
 					<xs:element name="GlancePage" type="xs:string" minOccurs="0"/>
 					<xs:element name="About" type="xs:string" minOccurs="0"/>
@@ -2148,7 +2624,7 @@
 								<xs:element name="FeedbackDateRange" minOccurs="0" maxOccurs="unbounded">
 									<xs:complexType>
 										<xs:sequence>
-											<xs:element name="SellerFeedbackRating" minOccurs="0" maxOccurs="unbounded">	
+											<xs:element name="SellerFeedbackRating" minOccurs="0" maxOccurs="unbounded">
 												<xs:complexType>
 													<xs:sequence>
 														<xs:element name="Count" type="xs:nonNegativeInteger" minOccurs="0"/>
@@ -2160,7 +2636,7 @@
 										</xs:sequence>
 										<xs:attribute name="Period" type="xs:string"/>
 									</xs:complexType>
-								</xs:element>      	
+								</xs:element>     	
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
@@ -2360,8 +2836,8 @@
 					<xs:element name="HandOrientation" type="xs:string" minOccurs="0"/>
 					<xs:element name="HardDiskCount" type="xs:nonNegativeInteger" minOccurs="0"/>
 					<xs:element name="HardDiskSize" type="tns:DecimalWithUnits" minOccurs="0"/>
-					<xs:element name="HardDiskInterface" type="xs:string" minOccurs="0"/>	
-					<xs:element name="HardwarePlatform" type="xs:string" minOccurs="0"/>	
+					<xs:element name="HardDiskInterface" type="xs:string" minOccurs="0"/>
+					<xs:element name="HardwarePlatform" type="xs:string" minOccurs="0"/>
 					<xs:element name="HasAutoFocus" type="xs:boolean" minOccurs="0"/>
 					<xs:element name="HasBurstMode" type="xs:boolean" minOccurs="0"/>
 					<xs:element name="HasInCameraEditing" type="xs:boolean" minOccurs="0"/>
@@ -2766,6 +3242,7 @@
 					<xs:element name="MetalStamp" type="xs:string" minOccurs="0"/>
 					<xs:element name="MetalType" type="xs:string" minOccurs="0"/>
 					<xs:element name="MiniMovieDescription" type="xs:string" minOccurs="0"/>
+					<xs:element name="MinimumAdvertisedPrice" type="tns:Price" minOccurs="0"/>
 					<xs:element name="MinimumFocalLength" type="tns:DecimalWithUnits" minOccurs="0"/>
 					<xs:element name="MinimumShutterSpeed" type="tns:DecimalWithUnits" minOccurs="0"/>
 					<xs:element name="Model" type="xs:string" minOccurs="0"/>
@@ -2931,6 +3408,7 @@
 	       </xs:simpleType>
 	</xs:schema>
     </types>
+
     <message name="HelpRequestMsg">
 	<part name="body" element="tns:Help"/>
     </message>
@@ -3045,6 +3523,24 @@
     <message name="SellerListingLookupResponseMsg">
 	<part name="body" element="tns:SellerListingLookupResponse"/>
     </message>
+    <message name="VehicleSearchRequestMsg">
+	<part name="body" element="tns:VehicleSearch"/>
+    </message>
+    <message name="VehicleSearchResponseMsg">
+	<part name="body" element="tns:VehicleSearchResponse"/>
+    </message>
+    <message name="VehiclePartSearchRequestMsg">
+	<part name="body" element="tns:VehiclePartSearch"/>
+    </message>
+    <message name="VehiclePartSearchResponseMsg">
+	<part name="body" element="tns:VehiclePartSearchResponse"/>
+    </message>
+    <message name="VehiclePartLookupRequestMsg">
+	<part name="body" element="tns:VehiclePartLookup"/>
+    </message>
+    <message name="VehiclePartLookupResponseMsg">
+	<part name="body" element="tns:VehiclePartLookupResponse"/>
+    </message>
     <message name="MultiOperationRequestMsg">
 	<part name="body" element="tns:MultiOperation"/>
     </message>
@@ -3128,6 +3624,18 @@
 	    <input message="tns:TagLookupRequestMsg"/>
 	    <output message="tns:TagLookupResponseMsg"/>
 	</operation>
+	<operation name="VehicleSearch">
+	    <input message="tns:VehicleSearchRequestMsg"/>
+	    <output message="tns:VehicleSearchResponseMsg"/>
+	</operation>
+	<operation name="VehiclePartSearch">
+	    <input message="tns:VehiclePartSearchRequestMsg"/>
+	    <output message="tns:VehiclePartSearchResponseMsg"/>
+	</operation>
+	<operation name="VehiclePartLookup">
+	    <input message="tns:VehiclePartLookupRequestMsg"/>
+	    <output message="tns:VehiclePartLookupResponseMsg"/>
+	</operation>
 	<operation name="MultiOperation">
 	    <input message="tns:MultiOperationRequestMsg"/>
 	    <output message="tns:MultiOperationResponseMsg"/>
@@ -3136,7 +3644,7 @@
     <binding name="AWSECommerceServiceBinding" type="tns:AWSECommerceServicePortType">
 	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 	<operation name="Help">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/Help"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3145,7 +3653,7 @@
 	    </output>
 	</operation>
 	<operation name="ItemSearch">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/ItemSearch"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3154,7 +3662,7 @@
 	    </output>
 	</operation>
 	<operation name="ItemLookup">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/ItemLookup"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3163,7 +3671,7 @@
 	    </output>
 	</operation>
 	<operation name="BrowseNodeLookup">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/BrowseNodeLookup"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3172,7 +3680,7 @@
 	    </output>
 	</operation>
 	<operation name="ListSearch">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/ListSearch"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3181,7 +3689,7 @@
 	    </output>
 	</operation>
 	<operation name="ListLookup">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/ListLookup"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3190,7 +3698,7 @@
 	    </output>
 	</operation>
 	<operation name="CustomerContentSearch">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/CustomerContentSearch"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3199,7 +3707,7 @@
 	    </output>
 	</operation>
 	<operation name="CustomerContentLookup">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/CustomerContentLookup"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3208,7 +3716,7 @@
 	    </output>
 	</operation>
 	<operation name="SimilarityLookup">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/SimilarityLookup"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3217,7 +3725,7 @@
 	    </output>
 	</operation>
 	<operation name="SellerLookup">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/SellerLookup"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3226,7 +3734,7 @@
 	    </output>
 	</operation>
 	<operation name="CartGet">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/CartGet"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3235,7 +3743,7 @@
 	    </output>
 	</operation>
 	<operation name="CartCreate">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/CartCreate"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3244,7 +3752,7 @@
 	    </output>
 	</operation>
 	<operation name="CartAdd">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/CartAdd"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3253,7 +3761,7 @@
 	    </output>
 	</operation>
 	<operation name="CartModify">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/CartModify"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3262,7 +3770,7 @@
 	    </output>
 	</operation>
 	<operation name="CartClear">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/CartClear"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3271,7 +3779,7 @@
 	    </output>
 	</operation>
 	<operation name="TransactionLookup">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/TransactionLookup"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3280,7 +3788,7 @@
 	    </output>
 	</operation>
 	<operation name="SellerListingSearch">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/SellerListingSearch"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3289,7 +3797,7 @@
 	    </output>
 	</operation>
 	<operation name="SellerListingLookup">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/SellerListingLookup"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3298,7 +3806,34 @@
 	    </output>
 	</operation>
 	<operation name="TagLookup">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/TagLookup"/>
+	    <input>
+		<soap:body use="literal"/>
+	    </input>
+	    <output>
+		<soap:body use="literal"/>
+	    </output>
+	</operation>
+	<operation name="VehicleSearch">
+	    <soap:operation soapAction="http://soap.amazon.com/VehicleSearch"/>
+	    <input>
+		<soap:body use="literal"/>
+	    </input>
+	    <output>
+		<soap:body use="literal"/>
+	    </output>
+	</operation>
+	<operation name="VehiclePartSearch">
+	    <soap:operation soapAction="http://soap.amazon.com/VehiclePartSearch"/>
+	    <input>
+		<soap:body use="literal"/>
+	    </input>
+	    <output>
+		<soap:body use="literal"/>
+	    </output>
+	</operation>
+	<operation name="VehiclePartLookup">
+	    <soap:operation soapAction="http://soap.amazon.com/VehiclePartLookup"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>
@@ -3307,7 +3842,7 @@
 	    </output>
 	</operation>
 	<operation name="MultiOperation">
-	    <soap:operation soapAction="http://soap.amazon.com"/>
+	    <soap:operation soapAction="http://soap.amazon.com/MultiOperation"/>
 	    <input>
 		<soap:body use="literal"/>
 	    </input>

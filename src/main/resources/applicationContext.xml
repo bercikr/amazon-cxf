@@ -6,13 +6,8 @@
 	<bean
 		class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
 
-	<bean id="amazonProperties"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="classpath:amazon.properties" />
-	</bean>
-
 	<bean id="amazonAssociatesWebServiceAccount"
-		class="com.supervaca.pricewatch.domain.AmazonAssociatesWebServiceAccount">
+		class="com.googlecode.amazoncxf.domain.AmazonAssociatesWebServiceAccount">
 		<property name="awsAccessKeyId" value="${awsAccessKeyId}" />
 		<property name="associateTag" value="${associateTag}" />
 	</bean>
@@ -20,8 +15,11 @@
 	<bean id="awseCommerceService"
 		class="com.amazon.webservices.awsecommerceservice._2009_02_01.AWSECommerceService" />
 
-	<bean id="awseCommerceServicePort"
-		factory-bean="awseCommerceService"
+	<bean id="awseCommerceServicePort" factory-bean="awseCommerceService"
 		factory-method="getAWSECommerceServicePort" />
 
+	<bean id="itemDao" class="com.googlecode.amazoncxf.dao.ItemDaoImpl">
+		<property name="amazonAssociatesWebServiceAccount" ref="amazonAssociatesWebServiceAccount" />
+		<property name="awseCommerceServicePort" ref="awseCommerceServicePort" />
+	</bean>
 </beans>

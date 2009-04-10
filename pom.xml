@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.googlecode.amazon-cxf</groupId>
@@ -37,28 +36,26 @@
 	<properties>
 		<spring.version>2.5.6</spring.version>
 		<cxf.version>2.2</cxf.version>
-		<hibernate.version>3.0.0.ga</hibernate.version>
-		<!-- http://webservices.amazon.com/AWSECommerceService/AWSECommerceService.wsdl -->
+		<junit.version>4.5</junit.version>
+		<!--
+			http://webservices.amazon.com/AWSECommerceService/AWSECommerceService.wsdl
+		-->
 		<!-- src/main/resources/AWSECommerceService.wsdl -->
 		<wsdl.location>
-			http://webservices.amazon.com/AWSECommerceService/AWSECommerceService.wsdl
+			src/main/resources/AWSECommerceService.wsdl
 		</wsdl.location>
 	</properties>
 
 	<profiles>
 		<profile>
-			<id>default</id>
-			<properties>
-				<cxf.proxy></cxf.proxy>				
-			</properties>
+			<id>amazon-cxf-default</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
-		</profile>		
+		</profile>
 	</profiles>
 
 	<dependencies>
-		<!-- Spring is directly included to override the version 2.0.4 cxf brings in its own dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -126,10 +123,11 @@
 		</dependency>
 
 
-		<!-- Depending on your requirements you may need more or less modules from cxf -->
-
-		<!-- Hibernate -->
-		<!-- asm and cglib-nodep are included because of a depency conflict between Hibernate and Spring -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
