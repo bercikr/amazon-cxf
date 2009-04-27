@@ -43,10 +43,11 @@
         <junit.version>4.5</junit.version>
 		<!--
 			http://webservices.amazon.com/AWSECommerceService/AWSECommerceService.wsdl
+			http://ecs.amazonaws.com/AWSECommerceService/2009-02-01/AWSECommerceService.wsdl
 		-->
-		<!-- src/main/resources/AWSECommerceService.wsdl -->
+		<!-- ${basedir}/src/main/resources/AWSECommerceService.wsdl -->
         <wsdl.location>
-			src/main/resources/AWSECommerceService.wsdl
+			http://ecs.amazonaws.com/AWSECommerceService/2009-02-01/AWSECommerceService.wsdl
         </wsdl.location>
     </properties>
 
