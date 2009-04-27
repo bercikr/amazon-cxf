@@ -65,8 +65,10 @@ public class ItemDaoImpl implements ItemDao {
 		itemLookupRequest.setIdType("ASIN");
 		itemLookupRequest.setMerchantId("Amazon"); // Amazon USA
 		itemLookupRequest.getItemId().add(asin);
-		itemLookupRequest.getResponseGroup().add("Small");
+		itemLookupRequest.getResponseGroup().add("ItemAttributes");
 		itemLookupRequest.getResponseGroup().add("Offers");
+        itemLookupRequest.getResponseGroup().add("OfferSummary");
+        itemLookupRequest.getResponseGroup().add("Images");
 		itemLookup.setShared(itemLookupRequest);
 
 		ItemLookupResponse itemLookupResponse = client.itemLookup(itemLookup);
