@@ -102,6 +102,7 @@ public class ItemDaoImpl implements ItemDao {
 		}
 		itemLookupRequest.getResponseGroup().add("Small");
 		itemLookupRequest.getResponseGroup().add("Offers");
+		itemLookupRequest.getResponseGroup().add("Images");
 		itemLookup.setShared(itemLookupRequest);
 
 		ItemLookupResponse itemLookupResponse = client.itemLookup(itemLookup);
@@ -159,6 +160,7 @@ public class ItemDaoImpl implements ItemDao {
 		itemSearchRequest.setMerchantId("Amazon");
 		itemSearchRequest.getResponseGroup().add("Small");
 		itemSearchRequest.getResponseGroup().add("Offers");
+		itemSearchRequest.getResponseGroup().add("Images");
 		itemSearch.setShared(itemSearchRequest);
 
 		ItemSearchResponse itemSearchResponse = client.itemSearch(itemSearch);
