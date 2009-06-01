@@ -84,7 +84,6 @@ public class ItemDaoImplTest {
             log.debug(ItemFormatter.formatItem(item));
         }
         assertNotNull(items);
-        assertEquals(items.size(), moreAsins.size());
     }
 
     @Test

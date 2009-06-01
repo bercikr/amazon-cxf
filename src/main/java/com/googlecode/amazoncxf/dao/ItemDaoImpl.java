@@ -20,7 +20,6 @@ import com.amazon.webservices.awsecommerceservice._2009_02_01.Items;
 import com.amazon.webservices.awsecommerceservice._2009_02_01.Errors.Error;
 import com.googlecode.amazoncxf.domain.AmazonAssociatesWebServiceAccount;
 
-
 public class ItemDaoImpl implements ItemDao {
 	private static Log log = LogFactory.getLog(ItemDaoImpl.class);
 
@@ -67,8 +66,8 @@ public class ItemDaoImpl implements ItemDao {
 		itemLookupRequest.getItemId().add(asin);
 		itemLookupRequest.getResponseGroup().add("ItemAttributes");
 		itemLookupRequest.getResponseGroup().add("Offers");
-        itemLookupRequest.getResponseGroup().add("OfferSummary");
-        itemLookupRequest.getResponseGroup().add("Images");
+		itemLookupRequest.getResponseGroup().add("OfferSummary");
+		itemLookupRequest.getResponseGroup().add("Images");
 		itemLookup.setShared(itemLookupRequest);
 
 		ItemLookupResponse itemLookupResponse = client.itemLookup(itemLookup);
@@ -110,8 +109,9 @@ public class ItemDaoImpl implements ItemDao {
 		// Were there any errors?
 		if (itemLookupResponse.getOperationRequest() != null
 				&& itemLookupResponse.getOperationRequest().getErrors() != null
-				&& itemLookupResponse.getOperationRequest().getErrors() != null) {			
-			for (Error error : itemLookupResponse.getOperationRequest().getErrors().getError()) {
+				&& itemLookupResponse.getOperationRequest().getErrors() != null) {
+			for (Error error : itemLookupResponse.getOperationRequest()
+					.getErrors().getError()) {
 				log.error(error.getCode() + ": " + error.getCode());
 			}
 		}
@@ -122,9 +122,17 @@ public class ItemDaoImpl implements ItemDao {
 					if (items.getRequest().getErrors() != null) {
 						for (Error error : items.getRequest().getErrors()
 								.getError()) {
-							log.error(error.getCode() + ": " + error.getCode());
-							throw new IllegalArgumentException(error.getCode()
-									+ ": " + error.getCode());
+							log.error(error.getCode() + ": "
+									+ error.getMessage());
+							if (error.getCode().equals(
+									"AWS.InvalidParameterValue")) {
+								log
+										.error("Couldn't find item, please check previous error.");
+							} else { // We're dealing with another error
+								throw new IllegalArgumentException(error
+										.getCode()
+										+ ": " + error.getMessage());
+							}
 						}
 					}
 				}
