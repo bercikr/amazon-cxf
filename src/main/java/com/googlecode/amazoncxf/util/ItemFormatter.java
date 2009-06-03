@@ -8,7 +8,8 @@ public class ItemFormatter {
 
 		sb.append("ASIN: " + item.getASIN());
 		sb.append(", Name: " + item.getItemAttributes().getTitle());
-		if (item.getOffers().getTotalOffers().intValue() > 0) {
+		if (item.getOffers() != null
+				&& item.getOffers().getTotalOffers().intValue() > 0) {
 			sb.append(", Price: "
 					+ item.getOffers().getOffer().get(0).getOfferListing().get(
 							0).getPrice().getFormattedPrice());

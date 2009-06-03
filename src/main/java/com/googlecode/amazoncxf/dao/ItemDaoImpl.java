@@ -48,6 +48,15 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	public Item lookup(String asin) {
+		List<String> responseGroups = new ArrayList<String>();
+		responseGroups.add("ItemAttributes");
+		responseGroups.add("Offers");
+		responseGroups.add("OfferSummary");
+		responseGroups.add("Images");
+		return lookup(asin, responseGroups);
+	}
+
+	public Item lookup(String asin, List<String> responseGroups) {
 		if (StringUtils.isBlank(asin)) {
 			throw new IllegalArgumentException(
 					"Parameter asins can't be null or blank.");
@@ -64,13 +73,33 @@ public class ItemDaoImpl implements ItemDao {
 		itemLookupRequest.setIdType("ASIN");
 		itemLookupRequest.setMerchantId("Amazon"); // Amazon USA
 		itemLookupRequest.getItemId().add(asin);
-		itemLookupRequest.getResponseGroup().add("ItemAttributes");
-		itemLookupRequest.getResponseGroup().add("Offers");
-		itemLookupRequest.getResponseGroup().add("OfferSummary");
-		itemLookupRequest.getResponseGroup().add("Images");
+		itemLookupRequest.getResponseGroup().addAll(responseGroups);
 		itemLookup.setShared(itemLookupRequest);
 
 		ItemLookupResponse itemLookupResponse = client.itemLookup(itemLookup);
+
+		if (itemLookupResponse.getItems() != null) {
+			for (Items items : itemLookupResponse.getItems()) {
+				if (items.getItem() != null) {
+					if (items.getRequest().getErrors() != null) {
+						for (Error error : items.getRequest().getErrors()
+								.getError()) {
+							log.error(error.getCode() + ": "
+									+ error.getMessage());
+							if (error.getCode().equals(
+									"AWS.InvalidParameterValue")) {
+								log
+										.error("Couldn't find item, please check previous error.");
+							} else { // We're dealing with another error
+								throw new IllegalArgumentException(error
+										.getCode()
+										+ ": " + error.getMessage());
+							}
+						}
+					}
+				}
+			}
+		}
 
 		for (Items items : itemLookupResponse.getItems()) {
 			for (Item itemInLoop : items.getItem()) {
@@ -82,6 +111,14 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	public List<Item> getItems(List<String> asins) {
+		List<String> responseGroups = new ArrayList<String>();
+		responseGroups.add("Small");
+		responseGroups.add("Offers");
+		responseGroups.add("Images");
+		return getItems(asins, responseGroups);
+	}
+
+	public List<Item> getItems(List<String> asins, List<String> responseGroups) {
 		if (asins == null) {
 			throw new IllegalArgumentException("Parameter asins can't be null.");
 		}
@@ -96,12 +133,8 @@ public class ItemDaoImpl implements ItemDao {
 		ItemLookupRequest itemLookupRequest = new ItemLookupRequest();
 		itemLookupRequest.setIdType("ASIN");
 		itemLookupRequest.setMerchantId("Amazon"); // Amazon USA
-		for (String asin : asins) {
-			itemLookupRequest.getItemId().add(asin);
-		}
-		itemLookupRequest.getResponseGroup().add("Small");
-		itemLookupRequest.getResponseGroup().add("Offers");
-		itemLookupRequest.getResponseGroup().add("Images");
+		itemLookupRequest.getItemId().addAll(asins);
+		itemLookupRequest.getResponseGroup().addAll(responseGroups);
 		itemLookup.setShared(itemLookupRequest);
 
 		ItemLookupResponse itemLookupResponse = client.itemLookup(itemLookup);
@@ -149,8 +182,29 @@ public class ItemDaoImpl implements ItemDao {
 		return itemColl;
 	}
 
-	public List<Item> searchItems(String keyword) {
-		if (StringUtils.isBlank(keyword)) {
+	public List<Item> searchItems(String keywords) {
+		List<String> responseGroups = new ArrayList<String>();
+		responseGroups.add("Small");
+		responseGroups.add("Offers");
+		responseGroups.add("Images");
+		return searchItems(keywords, responseGroups, "All");
+	}
+
+	public List<Item> searchItems(String keywords, List<String> responseGroups) {
+		return searchItems(keywords, responseGroups, "All");
+	}
+
+	public List<Item> searchItems(String keywords, String searchIndex) {
+		List<String> responseGroups = new ArrayList<String>();
+		responseGroups.add("Small");
+		responseGroups.add("Offers");
+		responseGroups.add("Images");
+		return searchItems(keywords, responseGroups, searchIndex);
+	}
+
+	public List<Item> searchItems(String keywords, List<String> responseGroups,
+			String searchIndex) {
+		if (StringUtils.isBlank(keywords)) {
 			throw new IllegalArgumentException(
 					"Parameter keyword can't be null or blank.");
 		}
@@ -163,12 +217,11 @@ public class ItemDaoImpl implements ItemDao {
 		itemSearch.setAssociateTag(amazonAssociatesWebServiceAccount
 				.getAssociateTag());
 		ItemSearchRequest itemSearchRequest = new ItemSearchRequest();
-		itemSearchRequest.setSearchIndex("All");
-		itemSearchRequest.setKeywords(keyword);
+		itemSearchRequest.setSearchIndex(searchIndex);
+		itemSearchRequest.getResponseGroup().addAll(responseGroups);
+		itemSearchRequest.setKeywords(keywords);
 		itemSearchRequest.setMerchantId("Amazon");
-		itemSearchRequest.getResponseGroup().add("Small");
-		itemSearchRequest.getResponseGroup().add("Offers");
-		itemSearchRequest.getResponseGroup().add("Images");
+
 		itemSearch.setShared(itemSearchRequest);
 
 		ItemSearchResponse itemSearchResponse = client.itemSearch(itemSearch);
