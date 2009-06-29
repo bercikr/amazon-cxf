@@ -6,8 +6,8 @@
                            http://www.springframework.org/schema/beans
                              http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<http-conf:conduit
-		name="{http://webservices.amazon.com/AWSECommerceService/2009-02-01}AWSECommerceServicePort.http-conduit">
+	<http-conf:conduit	
+		name="*.http-conduit">
 		<http-conf:client Connection="Keep-Alive" AllowChunking="false" ${cxf.proxy} />
 	</http-conf:conduit>
 </beans>

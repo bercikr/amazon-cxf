@@ -2,7 +2,7 @@ package com.googlecode.amazoncxf.dao;
 
 import java.util.List;
 
-import com.amazon.webservices.awsecommerceservice._2009_02_01.Item;
+import com.amazon.webservices.awsecommerceservice.Item;
 
 /**
  * Operations that can be performed on an Item, it uses the webservices to

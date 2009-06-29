@@ -1,6 +1,6 @@
 package com.googlecode.amazoncxf.util;
 
-import com.amazon.webservices.awsecommerceservice._2009_02_01.Item;
+import com.amazon.webservices.awsecommerceservice.Item;
 
 public class ItemFormatter {
 	public static String formatItem(Item item) {

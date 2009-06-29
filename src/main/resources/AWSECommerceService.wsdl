@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.amazon.com/AWSECommerceService/2009-02-01" targetNamespace="http://webservices.amazon.com/AWSECommerceService/2009-02-01">
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.amazon.com/AWSECommerceService/2009-06-01" targetNamespace="http://webservices.amazon.com/AWSECommerceService/2009-06-01">
     <types>
-		<xs:schema targetNamespace="http://webservices.amazon.com/AWSECommerceService/2009-02-01" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.amazon.com/AWSECommerceService/2009-02-01" elementFormDefault="qualified">
+		<xs:schema targetNamespace="http://webservices.amazon.com/AWSECommerceService/2009-06-01" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.amazon.com/AWSECommerceService/2009-06-01" elementFormDefault="qualified">
 	
 	        <xs:element name="Bin">
 	                <xs:complexType>
@@ -251,6 +251,7 @@
 							<xs:enumeration value="WishList"/>
 							<xs:enumeration value="Listmania"/>
 							<xs:enumeration value="WeddingRegistry"/>
+							<xs:enumeration value="BabyRegistry"/>
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
@@ -261,6 +262,7 @@
 				<xs:element name="ReviewSort" type="xs:string" minOccurs="0"/>
 				<xs:element name="Sort" type="xs:string" minOccurs="0"/>
 				<xs:element name="IsOmitPurchasedItems" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="IsIncludeUniversal" type="xs:boolean" minOccurs="0"/>
 			</xs:sequence>
 		</xs:complexType>
 		<xs:element name="CustomerContentSearch">
@@ -1322,6 +1324,18 @@
 					<xs:element name="QuantityReceived" type="xs:string" minOccurs="0"/>
 					<xs:element name="Priority" type="xs:string" minOccurs="0"/>
 					<xs:element ref="tns:Item" minOccurs="0"/>
+					<xs:element ref="tns:UniversalListItem" minOccurs="0"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="UniversalListItem">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="Title" type="xs:string" minOccurs="0"/>
+					<xs:element name="ProductUrl" type="xs:string" minOccurs="0"/>
+					<xs:element name="ImageUrl" type="xs:string" minOccurs="0"/>
+					<xs:element name="SoldBy" type="xs:string" minOccurs="0"/>
+					<xs:element name="SavedPrice" type="tns:Price" minOccurs="0"/>
 				</xs:sequence>
 			</xs:complexType>
 		</xs:element>
@@ -3853,7 +3867,7 @@
     </binding>
     <service name="AWSECommerceService">
 	<port name="AWSECommerceServicePort" binding="tns:AWSECommerceServiceBinding">
-	    <soap:address location="http://soap.amazon.com/onca/soap?Service=AWSECommerceService"/>
+	    <soap:address location="https://ecs.amazonaws.com/onca/soap?Service=AWSECommerceService"/>
 	</port>
     </service>
 </definitions>

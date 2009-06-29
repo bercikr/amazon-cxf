@@ -8,17 +8,18 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Required;
 
-import com.amazon.webservices.awsecommerceservice._2009_02_01.AWSECommerceServicePortType;
-import com.amazon.webservices.awsecommerceservice._2009_02_01.Item;
-import com.amazon.webservices.awsecommerceservice._2009_02_01.ItemLookup;
-import com.amazon.webservices.awsecommerceservice._2009_02_01.ItemLookupRequest;
-import com.amazon.webservices.awsecommerceservice._2009_02_01.ItemLookupResponse;
-import com.amazon.webservices.awsecommerceservice._2009_02_01.ItemSearch;
-import com.amazon.webservices.awsecommerceservice._2009_02_01.ItemSearchRequest;
-import com.amazon.webservices.awsecommerceservice._2009_02_01.ItemSearchResponse;
-import com.amazon.webservices.awsecommerceservice._2009_02_01.Items;
-import com.amazon.webservices.awsecommerceservice._2009_02_01.Errors.Error;
+import com.amazon.webservices.awsecommerceservice.AWSECommerceServicePortType;
+import com.amazon.webservices.awsecommerceservice.Item;
+import com.amazon.webservices.awsecommerceservice.ItemLookup;
+import com.amazon.webservices.awsecommerceservice.ItemLookupRequest;
+import com.amazon.webservices.awsecommerceservice.ItemLookupResponse;
+import com.amazon.webservices.awsecommerceservice.ItemSearch;
+import com.amazon.webservices.awsecommerceservice.ItemSearchRequest;
+import com.amazon.webservices.awsecommerceservice.ItemSearchResponse;
+import com.amazon.webservices.awsecommerceservice.Items;
+import com.amazon.webservices.awsecommerceservice.Errors.Error;
 import com.googlecode.amazoncxf.domain.AmazonAssociatesWebServiceAccount;
+
 
 public class ItemDaoImpl implements ItemDao {
 	private static Log log = LogFactory.getLog(ItemDaoImpl.class);

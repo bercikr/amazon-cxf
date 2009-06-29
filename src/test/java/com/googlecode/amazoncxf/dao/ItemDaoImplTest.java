@@ -1,6 +1,10 @@
 package com.googlecode.amazoncxf.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +20,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.util.CollectionUtils;
 
-import com.amazon.webservices.awsecommerceservice._2009_02_01.Item;
+import com.amazon.webservices.awsecommerceservice.Item;
 import com.googlecode.amazoncxf.util.ItemFormatter;
 
 public class ItemDaoImplTest {
