@@ -6,8 +6,10 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -71,12 +73,13 @@ public class ItemDaoImplTest {
 			fail();
 		} catch (IllegalArgumentException iae) {
 		}
-		
+
 		// No Images
 		responseGroups = CollectionUtils.arrayToList(new String[] { "Small",
 				"Offers" });
 		item = itemDao.lookup("B000FQ9QVI", responseGroups);
-		assertEquals("We shouldn't have any images", 0, item.getImageSets().size());
+		assertEquals("We shouldn't have any images", 0, item.getImageSets()
+				.size());
 		assertNull(item.getSmallImage());
 	}
 
@@ -124,6 +127,47 @@ public class ItemDaoImplTest {
 		assertTrue(items.size() > 0);
 		for (Item item : items) {
 			log.debug(ItemFormatter.formatItem(item));
+		}
+	}
+
+	@Test
+	public void testSearchItemsPaginated() throws Exception {
+		log.debug("testSearchItemsPaginated");
+		List<String> responseGroups = new ArrayList<String>();
+		responseGroups.add("Small");
+		responseGroups.add("Offers");
+		responseGroups.add("Images");
+		Map<String, Object> searchMap = itemDao.searchItems("ps3",
+				responseGroups, "All", 1);
+
+		List<Item> items = (List<Item>) searchMap.get("items");
+		Integer totalPages = ((BigInteger) searchMap.get("totalPages"))
+				.intValue();
+		Integer totalResults = ((BigInteger) searchMap.get("totalResults"))
+				.intValue();
+
+		assertNotNull(items);
+		assertTrue(items.size() > 0);
+		assertTrue(totalPages > 1);
+		assertTrue(totalResults > 1);
+
+		log.debug("totalResults: " + totalResults);
+		log.debug("totalPages: " + totalPages);
+		for (Item item : items) {
+			log.debug(ItemFormatter.formatItem(item));
+		}
+
+		// Display the next pages (if any)
+		if (totalPages > 1) {
+			for (int i = 2; i <= Math.min(totalPages, 5); i++) {
+				searchMap = itemDao
+						.searchItems("ps3", responseGroups, "All", i);
+				items = (List<Item>) searchMap.get("items");
+				log.debug("Page " + i);
+				for (Item item : items) {
+					log.debug(ItemFormatter.formatItem(item));
+				}
+			}
 		}
 	}
 

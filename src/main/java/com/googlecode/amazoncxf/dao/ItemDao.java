@@ -1,6 +1,7 @@
 package com.googlecode.amazoncxf.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.amazon.webservices.awsecommerceservice.Item;
 
@@ -87,6 +88,20 @@ public interface ItemDao {
 	 * @param searchIndex
 	 * @return
 	 */
-	List<Item> searchItems(String keyword, List<String> responseGroups,
+	List<Item> searchItems(String keywords, List<String> responseGroups,
 			String searchIndex);
+
+	/**
+	 * Searches items by keyword in all categories and the specified Search
+	 * Index and Response Group and page number It returns a map with multiple
+	 * results: List<Item> items BigInteger totalResults BigInteger totalPages)
+	 * 
+	 * @param keyword
+	 * @param responseGroups
+	 * @param searchIndex
+	 * @param pageNumber
+	 * @return
+	 */
+	Map<String, Object> searchItems(String keywords,
+			List<String> responseGroups, String searchIndex, Integer pageNumber);
 }

@@ -47,7 +47,7 @@
 		-->
 		<!-- ${basedir}/src/main/resources/AWSECommerceService.wsdl -->
 		<wsdl.location>
-			http://ecs.amazonaws.com/AWSECommerceService/2009-06-01/AWSECommerceService.wsdl
+			http://ecs.amazonaws.com/AWSECommerceService/2009-07-01/AWSECommerceService.wsdl
         </wsdl.location>
 	</properties>
 

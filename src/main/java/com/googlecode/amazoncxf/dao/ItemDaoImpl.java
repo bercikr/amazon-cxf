@@ -1,7 +1,10 @@
 package com.googlecode.amazoncxf.dao;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -202,9 +205,15 @@ public class ItemDaoImpl implements ItemDao {
 		responseGroups.add("Images");
 		return searchItems(keywords, responseGroups, searchIndex);
 	}
-
+	
 	public List<Item> searchItems(String keywords, List<String> responseGroups,
-			String searchIndex) {
+			String searchIndex) {		
+		return (List<Item>) searchItems(keywords, responseGroups, searchIndex,
+				1).get("items");
+	}
+
+	public Map<String, Object> searchItems(String keywords, List<String> responseGroups,
+			String searchIndex, Integer pageNumber) {
 		if (StringUtils.isBlank(keywords)) {
 			throw new IllegalArgumentException(
 					"Parameter keyword can't be null or blank.");
@@ -222,8 +231,9 @@ public class ItemDaoImpl implements ItemDao {
 		itemSearchRequest.getResponseGroup().addAll(responseGroups);
 		itemSearchRequest.setKeywords(keywords);
 		itemSearchRequest.setMerchantId("Amazon");
+		itemSearchRequest.setItemPage(BigInteger.valueOf(pageNumber));
 
-		itemSearch.setShared(itemSearchRequest);
+		itemSearch.setShared(itemSearchRequest);		
 
 		ItemSearchResponse itemSearchResponse = client.itemSearch(itemSearch);
 
@@ -260,6 +270,12 @@ public class ItemDaoImpl implements ItemDao {
 			}
 		}
 
-		return itemColl;
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("items", itemColl);
+		map.put("totalPages", itemSearchResponse.getItems().get(0).getTotalPages());
+		map.put("totalResults", itemSearchResponse.getItems().get(0).getTotalResults());
+		
+		return map ;
 	}
 }
