@@ -1,7 +1,9 @@
 package com.googlecode.amazoncxf.util;
 
 import java.io.IOException;
-import java.util.ResourceBundle;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
 import javax.security.auth.callback.Callback;
 import javax.security.auth.callback.CallbackHandler;
@@ -12,31 +14,30 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.ws.security.WSPasswordCallback;
 
 public class PasswordCallback implements CallbackHandler {
+	protected static final Log logger = LogFactory.getLog(PasswordCallback.class);
+	private static Properties props;
+	private static Map<String, String> passwords;
 
-	protected final Log logger = LogFactory.getLog(getClass());
+	static {
+		props = new Properties();
+		passwords = new HashMap<String, String>();
+		try {
+			props.load(ClassLoader.getSystemResourceAsStream("client_sign.properties"));
+			passwords.put(props.getProperty("org.apache.ws.security.crypto.merlin.keystore.alias"), props.getProperty("org.apache.ws.security.crypto.merlin.keystore.password"));
+		} catch (Throwable t) {
+			logger.error(t);
+		}
+		logger.debug(passwords);
+	}
 
-	public void handle(Callback[] callbacks) throws IOException,
-			UnsupportedCallbackException {
-
+	public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
 		for (int i = 0; i < callbacks.length; i++) {
-			WSPasswordCallback pc = (WSPasswordCallback) callbacks[0];
+			WSPasswordCallback pc = (WSPasswordCallback) callbacks[i];
 
-			int usage = pc.getUsage();
-			logger.debug("identifier: " + pc.getIdentifier());
-			logger.debug("usage: " + pc.getUsage());
-
-			ResourceBundle props = ResourceBundle.getBundle("client_sign");
-
-			if (usage == WSPasswordCallback.USERNAME_TOKEN) {
-				// username token pwd...
-				pc
-						.setPassword(props
-								.getString("org.apache.ws.security.crypto.merlin.keystore.password"));
-			} else if (usage == WSPasswordCallback.SIGNATURE) {
-				// set the password for client's keystore.keyPassword
-				pc
-						.setPassword(props
-								.getString("org.apache.ws.security.crypto.merlin.keystore.password"));
+			String pass = passwords.get(pc.getIdentifier());
+			if (pass != null) {
+				pc.setPassword(pass);
+				return;
 			}
 		}
 	}
