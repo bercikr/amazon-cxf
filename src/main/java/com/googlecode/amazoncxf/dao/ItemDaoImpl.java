@@ -23,7 +23,6 @@ import com.amazon.webservices.awsecommerceservice.Items;
 import com.amazon.webservices.awsecommerceservice.Errors.Error;
 import com.googlecode.amazoncxf.domain.AmazonAssociatesWebServiceAccount;
 
-
 public class ItemDaoImpl implements ItemDao {
 	private static Log log = LogFactory.getLog(ItemDaoImpl.class);
 
@@ -36,8 +35,7 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	@Required
-	public void setAmazonAssociatesWebServiceAccount(
-			AmazonAssociatesWebServiceAccount amazonAssociatesWebServiceAccount) {
+	public void setAmazonAssociatesWebServiceAccount(AmazonAssociatesWebServiceAccount amazonAssociatesWebServiceAccount) {
 		this.amazonAssociatesWebServiceAccount = amazonAssociatesWebServiceAccount;
 	}
 
@@ -46,8 +44,7 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	@Required
-	public void setAwseCommerceServicePort(
-			AWSECommerceServicePortType awseCommerceServicePort) {
+	public void setAwseCommerceServicePort(AWSECommerceServicePortType awseCommerceServicePort) {
 		this.awseCommerceServicePort = awseCommerceServicePort;
 	}
 
@@ -62,17 +59,14 @@ public class ItemDaoImpl implements ItemDao {
 
 	public Item lookup(String asin, List<String> responseGroups) {
 		if (StringUtils.isBlank(asin)) {
-			throw new IllegalArgumentException(
-					"Parameter asins can't be null or blank.");
+			throw new IllegalArgumentException("Parameter asins can't be null or blank.");
 		}
 		Item item = null;
 		AWSECommerceServicePortType client = getAwseCommerceServicePort();
 
 		ItemLookup itemLookup = new ItemLookup();
-		itemLookup.setAWSAccessKeyId(amazonAssociatesWebServiceAccount
-				.getAwsAccessKeyId());
-		itemLookup.setAssociateTag(amazonAssociatesWebServiceAccount
-				.getAssociateTag());
+		itemLookup.setAWSAccessKeyId(amazonAssociatesWebServiceAccount.getAwsAccessKeyId());
+		itemLookup.setAssociateTag(amazonAssociatesWebServiceAccount.getAssociateTag());
 		ItemLookupRequest itemLookupRequest = new ItemLookupRequest();
 		itemLookupRequest.setIdType("ASIN");
 		itemLookupRequest.setMerchantId("Amazon"); // Amazon USA
@@ -86,18 +80,12 @@ public class ItemDaoImpl implements ItemDao {
 			for (Items items : itemLookupResponse.getItems()) {
 				if (items.getItem() != null) {
 					if (items.getRequest().getErrors() != null) {
-						for (Error error : items.getRequest().getErrors()
-								.getError()) {
-							log.error(error.getCode() + ": "
-									+ error.getMessage());
-							if (error.getCode().equals(
-									"AWS.InvalidParameterValue")) {
-								log
-										.error("Couldn't find item, please check previous error.");
+						for (Error error : items.getRequest().getErrors().getError()) {
+							log.error(error.getCode() + ": " + error.getMessage());
+							if (error.getCode().equals("AWS.InvalidParameterValue")) {
+								log.error("Couldn't find item, please check previous error.");
 							} else { // We're dealing with another error
-								throw new IllegalArgumentException(error
-										.getCode()
-										+ ": " + error.getMessage());
+								throw new IllegalArgumentException(error.getCode() + ": " + error.getMessage());
 							}
 						}
 					}
@@ -130,10 +118,8 @@ public class ItemDaoImpl implements ItemDao {
 		AWSECommerceServicePortType client = getAwseCommerceServicePort();
 
 		ItemLookup itemLookup = new ItemLookup();
-		itemLookup.setAWSAccessKeyId(amazonAssociatesWebServiceAccount
-				.getAwsAccessKeyId());
-		itemLookup.setAssociateTag(amazonAssociatesWebServiceAccount
-				.getAssociateTag());
+		itemLookup.setAWSAccessKeyId(amazonAssociatesWebServiceAccount.getAwsAccessKeyId());
+		itemLookup.setAssociateTag(amazonAssociatesWebServiceAccount.getAssociateTag());
 		ItemLookupRequest itemLookupRequest = new ItemLookupRequest();
 		itemLookupRequest.setIdType("ASIN");
 		itemLookupRequest.setMerchantId("Amazon"); // Amazon USA
@@ -144,11 +130,8 @@ public class ItemDaoImpl implements ItemDao {
 		ItemLookupResponse itemLookupResponse = client.itemLookup(itemLookup);
 
 		// Were there any errors?
-		if (itemLookupResponse.getOperationRequest() != null
-				&& itemLookupResponse.getOperationRequest().getErrors() != null
-				&& itemLookupResponse.getOperationRequest().getErrors() != null) {
-			for (Error error : itemLookupResponse.getOperationRequest()
-					.getErrors().getError()) {
+		if (itemLookupResponse.getOperationRequest() != null && itemLookupResponse.getOperationRequest().getErrors() != null && itemLookupResponse.getOperationRequest().getErrors() != null) {
+			for (Error error : itemLookupResponse.getOperationRequest().getErrors().getError()) {
 				log.error(error.getCode() + ": " + error.getCode());
 			}
 		}
@@ -157,18 +140,12 @@ public class ItemDaoImpl implements ItemDao {
 			for (Items items : itemLookupResponse.getItems()) {
 				if (items.getItem() != null) {
 					if (items.getRequest().getErrors() != null) {
-						for (Error error : items.getRequest().getErrors()
-								.getError()) {
-							log.error(error.getCode() + ": "
-									+ error.getMessage());
-							if (error.getCode().equals(
-									"AWS.InvalidParameterValue")) {
-								log
-										.error("Couldn't find item, please check previous error.");
+						for (Error error : items.getRequest().getErrors().getError()) {
+							log.error(error.getCode() + ": " + error.getMessage());
+							if (error.getCode().equals("AWS.InvalidParameterValue")) {
+								log.error("Couldn't find item, please check previous error.");
 							} else { // We're dealing with another error
-								throw new IllegalArgumentException(error
-										.getCode()
-										+ ": " + error.getMessage());
+								throw new IllegalArgumentException(error.getCode() + ": " + error.getMessage());
 							}
 						}
 					}
@@ -205,27 +182,21 @@ public class ItemDaoImpl implements ItemDao {
 		responseGroups.add("Images");
 		return searchItems(keywords, responseGroups, searchIndex);
 	}
-	
-	public List<Item> searchItems(String keywords, List<String> responseGroups,
-			String searchIndex) {		
-		return (List<Item>) searchItems(keywords, responseGroups, searchIndex,
-				1).get("items");
+
+	public List<Item> searchItems(String keywords, List<String> responseGroups, String searchIndex) {
+		return (List<Item>) searchItems(keywords, responseGroups, searchIndex, 1).get("items");
 	}
 
-	public Map<String, Object> searchItems(String keywords, List<String> responseGroups,
-			String searchIndex, Integer pageNumber) {
+	public Map<String, Object> searchItems(String keywords, List<String> responseGroups, String searchIndex, Integer pageNumber) {
 		if (StringUtils.isBlank(keywords)) {
-			throw new IllegalArgumentException(
-					"Parameter keyword can't be null or blank.");
+			throw new IllegalArgumentException("Parameter keyword can't be null or blank.");
 		}
 		List<Item> itemColl = new ArrayList<Item>();
 		AWSECommerceServicePortType client = getAwseCommerceServicePort();
 
 		ItemSearch itemSearch = new ItemSearch();
-		itemSearch.setAWSAccessKeyId(amazonAssociatesWebServiceAccount
-				.getAwsAccessKeyId());
-		itemSearch.setAssociateTag(amazonAssociatesWebServiceAccount
-				.getAssociateTag());
+		itemSearch.setAWSAccessKeyId(amazonAssociatesWebServiceAccount.getAwsAccessKeyId());
+		itemSearch.setAssociateTag(amazonAssociatesWebServiceAccount.getAssociateTag());
 		ItemSearchRequest itemSearchRequest = new ItemSearchRequest();
 		itemSearchRequest.setSearchIndex(searchIndex);
 		itemSearchRequest.getResponseGroup().addAll(responseGroups);
@@ -233,16 +204,13 @@ public class ItemDaoImpl implements ItemDao {
 		itemSearchRequest.setMerchantId("Amazon");
 		itemSearchRequest.setItemPage(BigInteger.valueOf(pageNumber));
 
-		itemSearch.setShared(itemSearchRequest);		
+		itemSearch.setShared(itemSearchRequest);
 
 		ItemSearchResponse itemSearchResponse = client.itemSearch(itemSearch);
 
 		// Were there any errors?
-		if (itemSearchResponse.getOperationRequest() != null
-				&& itemSearchResponse.getOperationRequest().getErrors() != null
-				&& itemSearchResponse.getOperationRequest().getErrors() != null) {
-			for (Error error : itemSearchResponse.getOperationRequest()
-					.getErrors().getError()) {
+		if (itemSearchResponse.getOperationRequest() != null && itemSearchResponse.getOperationRequest().getErrors() != null && itemSearchResponse.getOperationRequest().getErrors() != null) {
+			for (Error error : itemSearchResponse.getOperationRequest().getErrors().getError()) {
 				log.error(error.getCode() + ": " + error.getCode());
 			}
 		}
@@ -251,12 +219,9 @@ public class ItemDaoImpl implements ItemDao {
 			for (Items items : itemSearchResponse.getItems()) {
 				if (items.getItem() != null) {
 					if (items.getRequest().getErrors() != null) {
-						for (Error error : items.getRequest().getErrors()
-								.getError()) {
-							log.error(error.getCode() + ": "
-									+ error.getMessage());
-							throw new IllegalArgumentException(error.getCode()
-									+ ": " + error.getMessage());
+						for (Error error : items.getRequest().getErrors().getError()) {
+							log.error(error.getCode() + ": " + error.getMessage());
+							throw new IllegalArgumentException(error.getCode() + ": " + error.getMessage());
 						}
 					}
 				}
@@ -270,12 +235,11 @@ public class ItemDaoImpl implements ItemDao {
 			}
 		}
 
-		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("items", itemColl);
 		map.put("totalPages", itemSearchResponse.getItems().get(0).getTotalPages());
 		map.put("totalResults", itemSearchResponse.getItems().get(0).getTotalResults());
-		
-		return map ;
+
+		return map;
 	}
 }
