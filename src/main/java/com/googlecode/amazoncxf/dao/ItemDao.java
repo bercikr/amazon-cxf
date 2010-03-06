@@ -31,6 +31,8 @@ public interface ItemDao {
 	 * @return
 	 */
 	Item lookup(String asin, List<String> responseGroups);
+	
+	Item lookup(String asin, List<String> responseGroups, Boolean amazonOnly);
 
 	/**
 	 * Gets the Item data for several ASINs at once

@@ -32,11 +32,9 @@ public class ItemDaoImplTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		ApplicationContext factory = new ClassPathXmlApplicationContext(
-				"applicationContext.xml");
+		ApplicationContext factory = new ClassPathXmlApplicationContext("applicationContext.xml");
 		itemDao = (ItemDao) factory.getBean("itemDao");
-		log.debug(((ItemDaoImpl) itemDao)
-				.getAmazonAssociatesWebServiceAccount());
+		log.debug(((ItemDaoImpl) itemDao).getAmazonAssociatesWebServiceAccount());
 	}
 
 	@AfterClass
@@ -66,8 +64,7 @@ public class ItemDaoImplTest {
 		log.debug(ItemFormatter.formatItem(item));
 
 		// Add a valid RG and an invalid one.
-		responseGroups = CollectionUtils.arrayToList(new String[] { "Small",
-				"XXX" });
+		responseGroups = CollectionUtils.arrayToList(new String[] { "Small", "XXX" });
 		try {
 			item = itemDao.lookup("B000FQ9QVI", responseGroups);
 			fail();
@@ -75,11 +72,9 @@ public class ItemDaoImplTest {
 		}
 
 		// No Images
-		responseGroups = CollectionUtils.arrayToList(new String[] { "Small",
-				"Offers" });
+		responseGroups = CollectionUtils.arrayToList(new String[] { "Small", "Offers" });
 		item = itemDao.lookup("B000FQ9QVI", responseGroups);
-		assertEquals("We shouldn't have any images", 0, item.getImageSets()
-				.size());
+		assertEquals("We shouldn't have any images", 0, item.getImageSets().size());
 		assertNull(item.getSmallImage());
 	}
 
@@ -106,9 +101,7 @@ public class ItemDaoImplTest {
 		assertEquals(items.size(), asins.size());
 
 		log.debug("testGetItems-more");
-		List<String> moreAsins = CollectionUtils.arrayToList(new String[] {
-				"B001992NUQ", "B001ABN82K", "B001DSNF8C", "B001E0RZ3U",
-				"B001E2D44W", "B001IVXI7C", "B001LF2WCC", "B001OQCV74",
+		List<String> moreAsins = CollectionUtils.arrayToList(new String[] { "B001992NUQ", "B001ABN82K", "B001DSNF8C", "B001E0RZ3U", "B001E2D44W", "B001IVXI7C", "B001LF2WCC", "B001OQCV74",
 				"B001PKHRTG", "B001QIVEVE" });
 
 		items = itemDao.getItems(moreAsins);
@@ -137,14 +130,11 @@ public class ItemDaoImplTest {
 		responseGroups.add("Small");
 		responseGroups.add("Offers");
 		responseGroups.add("Images");
-		Map<String, Object> searchMap = itemDao.searchItems("ps3",
-				responseGroups, "All", 1);
+		Map<String, Object> searchMap = itemDao.searchItems("ps3", responseGroups, "All", 1);
 
 		List<Item> items = (List<Item>) searchMap.get("items");
-		Integer totalPages = ((BigInteger) searchMap.get("totalPages"))
-				.intValue();
-		Integer totalResults = ((BigInteger) searchMap.get("totalResults"))
-				.intValue();
+		Integer totalPages = ((BigInteger) searchMap.get("totalPages")).intValue();
+		Integer totalResults = ((BigInteger) searchMap.get("totalResults")).intValue();
 
 		assertNotNull(items);
 		assertTrue(items.size() > 0);
@@ -160,8 +150,7 @@ public class ItemDaoImplTest {
 		// Display the next pages (if any)
 		if (totalPages > 1) {
 			for (int i = 2; i <= Math.min(totalPages, 5); i++) {
-				searchMap = itemDao
-						.searchItems("ps3", responseGroups, "All", i);
+				searchMap = itemDao.searchItems("ps3", responseGroups, "All", i);
 				items = (List<Item>) searchMap.get("items");
 				log.debug("Page " + i);
 				for (Item item : items) {
@@ -187,5 +176,21 @@ public class ItemDaoImplTest {
 		asins.add("1932394885");
 		asins.add("B000KICN7U");
 		itemDao.getItems(asins);
+	}
+
+	/**
+	 * Get the prices from several merchants and get the lowest new and used
+	 * price, even if the Merchant is not Amazon
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testMultiplePrices() throws Exception {
+		List<String> responseGroups = new ArrayList<String>();
+		responseGroups.add("Large");
+		//responseGroups.add("OfferFull");
+		responseGroups.add("OfferListings");
+		Item item = itemDao.lookup("B00269QLH4", responseGroups , false);
+		log.debug(ItemFormatter.formatItem(item));
 	}
 }

@@ -58,6 +58,10 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	public Item lookup(String asin, List<String> responseGroups) {
+		return lookup(asin, responseGroups, true);
+	}
+
+	public Item lookup(String asin, List<String> responseGroups, Boolean amazonOnly) {
 		if (StringUtils.isBlank(asin)) {
 			throw new IllegalArgumentException("Parameter asins can't be null or blank.");
 		}
@@ -69,9 +73,10 @@ public class ItemDaoImpl implements ItemDao {
 		itemLookup.setAssociateTag(amazonAssociatesWebServiceAccount.getAssociateTag());
 		ItemLookupRequest itemLookupRequest = new ItemLookupRequest();
 		itemLookupRequest.setIdType("ASIN");
-		itemLookupRequest.setMerchantId("Amazon"); // Amazon USA
+		itemLookupRequest.setMerchantId(amazonOnly ? "Amazon" : "All"); // Amazon USA
 		itemLookupRequest.getItemId().add(asin);
 		itemLookupRequest.getResponseGroup().addAll(responseGroups);
+		itemLookupRequest.setCondition("All");
 		itemLookup.setShared(itemLookupRequest);
 
 		ItemLookupResponse itemLookupResponse = client.itemLookup(itemLookup);
