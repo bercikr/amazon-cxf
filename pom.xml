@@ -22,7 +22,7 @@
 
 	<properties>
 		<spring.version>3.0.1.RELEASE</spring.version>
-		<cxf.version>2.2.6</cxf.version>
+		<cxf.version>2.2.7</cxf.version>
 		<junit.version>4.8.1</junit.version>
 		<!--
 			http://webservices.amazon.com/AWSECommerceService/AWSECommerceService.wsdl
@@ -97,6 +97,14 @@
 				<exclusion>
 					<groupId>com.sun.jmx</groupId>
 					<artifactId>jmxri</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.mail</groupId>
+					<artifactId>mail</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.jms</groupId>
+					<artifactId>jms</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
