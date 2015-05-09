@@ -1,0 +1,1 @@
+Using this you can connect to the Amazon Associates Web Service very easily by just downloading the code and adding it as a Maven dependency.
