@@ -17,6 +17,7 @@
 
     <modules>
         <module>amazon-product-api</module>
+        <module>tiny-shop-web</module>
     </modules>
 
 
