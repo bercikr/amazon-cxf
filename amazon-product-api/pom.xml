@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.googlecode.amazon-cxf</groupId>
-	<artifactId>amazon-cxf</artifactId>
-	<version>1.0-SNAPSHOT</version>
 
-	<name>amazon-cxf-git</name>
+	<parent>
+		<groupId>com.tinyindustries</groupId>
+		<artifactId>tiny-shop</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>amazon-product-api</artifactId>
+	<name>amazon-product-api</name>
+
 	<description>Connect to the Amazon Associates Web Service</description>
 
 	<developers>
@@ -96,13 +101,6 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-codegen-plugin</artifactId>
