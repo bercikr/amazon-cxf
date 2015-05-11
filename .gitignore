@@ -1,0 +1,3 @@
+target
+src/test/resources/local.properties
+src/test/resources/my_amazon_cert.p12
