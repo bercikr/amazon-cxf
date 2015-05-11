@@ -11,7 +11,7 @@ import javax.security.auth.callback.UnsupportedCallbackException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.ws.security.WSPasswordCallback;
+import org.apache.wss4j.common.ext.WSPasswordCallback;
 
 public class PasswordCallback implements CallbackHandler {
 	protected static final Log logger = LogFactory.getLog(PasswordCallback.class);

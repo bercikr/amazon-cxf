@@ -11,48 +11,36 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import com.amazon.webservices.awsecommerceservice.BrowseNode;
+import com.amazon.webservices.awsecommerceservice.BrowseNodes;
+import com.googlecode.amazoncxf.config.AwsConfig;
+
+import com.googlecode.amazoncxf.util.XmlMarshaller;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.CollectionUtils;
 
 import com.amazon.webservices.awsecommerceservice.Item;
 import com.googlecode.amazoncxf.util.ItemFormatter;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {AwsConfig.class})
 public class ItemDaoImplTest {
 
-	private static Log log = LogFactory.getLog(ItemDaoImplTest.class);
-	static private ItemDao itemDao;
+	private static Logger log = LoggerFactory.getLogger(ItemDaoImplTest.class);
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-		ApplicationContext factory = new ClassPathXmlApplicationContext("applicationContext.xml");
-		itemDao = (ItemDao) factory.getBean("itemDao");
-		log.debug(((ItemDaoImpl) itemDao).getAmazonAssociatesWebServiceAccount());
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
+	@Autowired
+	ItemDaoImpl itemDao;
 
 	@Test
 	public void testLookup() throws Exception {
-		Item item = itemDao.lookup("B000FQ9QVI");
-		log.debug(ItemFormatter.formatItem(item));
+		Item item = itemDao.lookup("B00IN633AM");
+		log.info(ItemFormatter.formatItem(item));
 	}
 
 	@Test
@@ -61,7 +49,7 @@ public class ItemDaoImplTest {
 		List<String> responseGroups = new ArrayList<String>();
 		Item item = itemDao.lookup("B000FQ9QVI", responseGroups);
 		assertNotNull(item);
-		log.debug(ItemFormatter.formatItem(item));
+		log.info(ItemFormatter.formatItem(item));
 
 		// Add a valid RG and an invalid one.
 		responseGroups = CollectionUtils.arrayToList(new String[] { "Small", "XXX" });
@@ -80,7 +68,7 @@ public class ItemDaoImplTest {
 
 	@Test
 	public void testGetItems() throws Exception {
-		log.debug("testGetItems");
+		log.info("testGetItems");
 		List<String> asins = new ArrayList<String>();
 		asins.add("B000FQ9QVI");
 		asins.add("B000VWYJ86");
@@ -95,42 +83,63 @@ public class ItemDaoImplTest {
 		List<Item> items = itemDao.getItems(asins);
 
 		for (Item item : items) {
-			log.debug(ItemFormatter.formatItem(item));
+			log.info(ItemFormatter.formatItem(item));
 		}
 		assertNotNull(items);
 		assertEquals(items.size(), asins.size());
 
-		log.debug("testGetItems-more");
+		log.info("testGetItems-more");
 		List<String> moreAsins = CollectionUtils.arrayToList(new String[] { "B001992NUQ", "B001ABN82K", "B001DSNF8C", "B001E0RZ3U", "B001E2D44W", "B001IVXI7C", "B001LF2WCC", "B001OQCV74",
 				"B001PKHRTG", "B001QIVEVE" });
 
 		items = itemDao.getItems(moreAsins);
 		for (Item item : items) {
-			log.debug(ItemFormatter.formatItem(item));
+			log.info(ItemFormatter.formatItem(item));
 		}
 		assertNotNull(items);
 	}
 
 	@Test
 	public void testSearchItems() throws Exception {
-		log.debug("testSearchItems");
-		List<Item> items = itemDao.searchItems("ps3");
+		log.info("testSearchItems");
+		List<Item> items = itemDao.searchItems("60-Watt T10 Tubular Incandescent Medium");
 
 		assertNotNull(items);
 		assertTrue(items.size() > 0);
 		for (Item item : items) {
-			log.debug(ItemFormatter.formatItem(item));
+			log.info(ItemFormatter.formatItem(item));
+		}
+	}
+
+	@Test
+	public void testBrowseNodes() throws Exception {
+		List<BrowseNodes> nodes = itemDao.browseNode("2474971011");
+		for(BrowseNodes nxtList : nodes){
+
+			for(BrowseNode nxt : nxtList.getBrowseNode()){
+                XmlMarshaller.marshall(nxt, nxt.getBrowseNodeId());
+				log.info("node id: {} name: {}", nxt.getBrowseNodeId(), nxt.getName());
+				for(BrowseNode parent : nxt.getAncestors().getBrowseNode()){
+					log.info("parent id:{} name:{}", parent.getBrowseNodeId(), parent.getName());
+				}
+				if(nxt.getChildren()!=null)
+					for(BrowseNode child : nxt.getChildren().getBrowseNode()){
+						log.info("child: {}", child.getName());
+					}
+			}
 		}
 	}
 
 	@Test
 	public void testSearchItemsPaginated() throws Exception {
-		log.debug("testSearchItemsPaginated");
+		log.info("testSearchItemsPaginated");
 		List<String> responseGroups = new ArrayList<String>();
-		responseGroups.add("Small");
+        responseGroups.add("Small");
 		responseGroups.add("Offers");
-		responseGroups.add("Images");
-		Map<String, Object> searchMap = itemDao.searchItems("ps3", responseGroups, "All", 1);
+        String searchTerms = "Sunglasses";
+        String searchIndex = "Apparel";
+        String nodeNumber = "2474971011";
+		Map<String, Object> searchMap = itemDao.searchItems(searchTerms, responseGroups, searchIndex, nodeNumber, 1);
 
 		List<Item> items = (List<Item>) searchMap.get("items");
 		Integer totalPages = ((BigInteger) searchMap.get("totalPages")).intValue();
@@ -141,20 +150,20 @@ public class ItemDaoImplTest {
 		assertTrue(totalPages > 1);
 		assertTrue(totalResults > 1);
 
-		log.debug("totalResults: " + totalResults);
-		log.debug("totalPages: " + totalPages);
+		log.info("totalResults: " + totalResults);
+		log.info("totalPages: " + totalPages);
 		for (Item item : items) {
-			log.debug(ItemFormatter.formatItem(item));
+			log.info(ItemFormatter.formatItem(item));
 		}
 
 		// Display the next pages (if any)
 		if (totalPages > 1) {
-			for (int i = 2; i <= Math.min(totalPages, 5); i++) {
-				searchMap = itemDao.searchItems("ps3", responseGroups, "All", i);
+			for (int i = 2; i <= Math.min(totalPages,10); i++) {
+				searchMap = itemDao.searchItems(searchTerms, responseGroups, searchIndex, nodeNumber, i);
 				items = (List<Item>) searchMap.get("items");
-				log.debug("Page " + i);
+				log.info("Page " + i);
 				for (Item item : items) {
-					log.debug(ItemFormatter.formatItem(item));
+					log.info(ItemFormatter.formatItem(item));
 				}
 			}
 		}
@@ -181,7 +190,7 @@ public class ItemDaoImplTest {
 	/**
 	 * Get the prices from several merchants and get the lowest new and used
 	 * price, even if the Merchant is not Amazon
-	 * 
+	 *
 	 * @throws Exception
 	 */
 	@Test
@@ -191,6 +200,6 @@ public class ItemDaoImplTest {
 		//responseGroups.add("OfferFull");
 		responseGroups.add("OfferListings");
 		Item item = itemDao.lookup("B00269QLH4", responseGroups , false);
-		log.debug(ItemFormatter.formatItem(item));
+		log.info(ItemFormatter.formatItem(item));
 	}
 }

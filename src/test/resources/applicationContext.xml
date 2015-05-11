@@ -6,17 +6,12 @@
 	
 	<context:annotation-config />
 
-	<context:property-placeholder location="classpath:amazon-cxf.properties, classpath:client_sign.properties" />
+	<context:property-placeholder location="classpath:amazon-cxf.properties, classpath:client_sign.properties, classpath:local.properties" />
 
 	<bean id="amazonAssociatesWebServiceAccount" class="com.googlecode.amazoncxf.domain.AmazonAssociatesWebServiceAccount">
 		<property name="awsAccessKeyId" value="${awsAccessKeyId}" />
 		<property name="associateTag" value="${associateTag}" />
 	</bean>
-
-	<!--
-		<bean id="awseCommerceService" class="com.amazon.webservices.awsecommerceservice.AWSECommerceService" /> <bean id="awseCommerceServicePort" factory-bean="awseCommerceService"
-		factory-method="getAWSECommerceServicePort" />
-	-->
 
 	<bean id="itemDao" class="com.googlecode.amazoncxf.dao.ItemDaoImpl">
 		<property name="amazonAssociatesWebServiceAccount" ref="amazonAssociatesWebServiceAccount" />

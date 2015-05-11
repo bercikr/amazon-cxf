@@ -1,29 +1,19 @@
 package com.googlecode.amazoncxf.dao;
 
+import com.amazon.webservices.awsecommerceservice.*;
+import com.amazon.webservices.awsecommerceservice.Errors.Error;
+import com.googlecode.amazoncxf.domain.AmazonAssociatesWebServiceAccount;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Required;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Required;
-
-import com.amazon.webservices.awsecommerceservice.AWSECommerceServicePortType;
-import com.amazon.webservices.awsecommerceservice.Item;
-import com.amazon.webservices.awsecommerceservice.ItemLookup;
-import com.amazon.webservices.awsecommerceservice.ItemLookupRequest;
-import com.amazon.webservices.awsecommerceservice.ItemLookupResponse;
-import com.amazon.webservices.awsecommerceservice.ItemSearch;
-import com.amazon.webservices.awsecommerceservice.ItemSearchRequest;
-import com.amazon.webservices.awsecommerceservice.ItemSearchResponse;
-import com.amazon.webservices.awsecommerceservice.Items;
-import com.amazon.webservices.awsecommerceservice.Errors.Error;
-import com.googlecode.amazoncxf.domain.AmazonAssociatesWebServiceAccount;
-
-public class ItemDaoImpl implements ItemDao {
+public class ItemDaoImpl {
 	private static Log log = LogFactory.getLog(ItemDaoImpl.class);
 
 	private AmazonAssociatesWebServiceAccount amazonAssociatesWebServiceAccount;
@@ -48,13 +38,19 @@ public class ItemDaoImpl implements ItemDao {
 		this.awseCommerceServicePort = awseCommerceServicePort;
 	}
 
-	public Item lookup(String asin) {
+	public List<String> getResponseGroups(){
 		List<String> responseGroups = new ArrayList<String>();
-		responseGroups.add("ItemAttributes");
-		responseGroups.add("Offers");
-		responseGroups.add("OfferSummary");
-		responseGroups.add("Images");
-		return lookup(asin, responseGroups);
+		//responseGroups.add("ItemAttributes");
+//		responseGroups.add("Offers");
+//		responseGroups.add("OfferSummary");
+//		responseGroups.add("Images");
+//		responseGroups.add("Reviews");
+		responseGroups.add("Large");
+		return responseGroups;
+	}
+
+	public Item lookup(String asin) {
+		return lookup(asin, getResponseGroups());
 	}
 
 	public Item lookup(String asin, List<String> responseGroups) {
@@ -62,7 +58,7 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	public Item lookup(String asin, List<String> responseGroups, Boolean amazonOnly) {
-		if (StringUtils.isBlank(asin)) {
+		if (asin==null||asin.trim().equals("")) {
 			throw new IllegalArgumentException("Parameter asins can't be null or blank.");
 		}
 		Item item = null;
@@ -107,12 +103,23 @@ public class ItemDaoImpl implements ItemDao {
 		return item;
 	}
 
+	public List<BrowseNodes> browseNode(String nodeId){
+		AWSECommerceServicePortType client = getAwseCommerceServicePort();
+
+		BrowseNodeLookup body = new BrowseNodeLookup();
+		body.setAWSAccessKeyId(amazonAssociatesWebServiceAccount.getAwsAccessKeyId());
+		body.setAssociateTag(amazonAssociatesWebServiceAccount.associateTag);
+		BrowseNodeLookupRequest req = new BrowseNodeLookupRequest();
+		req.getBrowseNodeId().add(nodeId);
+		body.setShared(req);
+		BrowseNodeLookupResponse resp = client.browseNodeLookup(body);
+
+		return resp.getBrowseNodes();
+
+	}
+
 	public List<Item> getItems(List<String> asins) {
-		List<String> responseGroups = new ArrayList<String>();
-		responseGroups.add("Small");
-		responseGroups.add("Offers");
-		responseGroups.add("Images");
-		return getItems(asins, responseGroups);
+		return getItems(asins, getResponseGroups());
 	}
 
 	public List<Item> getItems(List<String> asins, List<String> responseGroups) {
@@ -169,11 +176,8 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	public List<Item> searchItems(String keywords) {
-		List<String> responseGroups = new ArrayList<String>();
-		responseGroups.add("Small");
-		responseGroups.add("Offers");
-		responseGroups.add("Images");
-		return searchItems(keywords, responseGroups, "All");
+
+		return searchItems(keywords, getResponseGroups(), "All");
 	}
 
 	public List<Item> searchItems(String keywords, List<String> responseGroups) {
@@ -181,19 +185,15 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	public List<Item> searchItems(String keywords, String searchIndex) {
-		List<String> responseGroups = new ArrayList<String>();
-		responseGroups.add("Small");
-		responseGroups.add("Offers");
-		responseGroups.add("Images");
-		return searchItems(keywords, responseGroups, searchIndex);
+		return searchItems(keywords, getResponseGroups(), searchIndex);
 	}
 
 	public List<Item> searchItems(String keywords, List<String> responseGroups, String searchIndex) {
-		return (List<Item>) searchItems(keywords, responseGroups, searchIndex, 1).get("items");
+		return (List<Item>) searchItems(keywords, responseGroups, searchIndex, null, 1).get("items");
 	}
 
-	public Map<String, Object> searchItems(String keywords, List<String> responseGroups, String searchIndex, Integer pageNumber) {
-		if (StringUtils.isBlank(keywords)) {
+	public Map<String, Object> searchItems(String keywords, List<String> responseGroups, String searchIndex, String browseNode, Integer pageNumber) {
+		if (keywords==null||keywords.trim().equals("")) {
 			throw new IllegalArgumentException("Parameter keyword can't be null or blank.");
 		}
 		List<Item> itemColl = new ArrayList<Item>();
@@ -204,9 +204,12 @@ public class ItemDaoImpl implements ItemDao {
 		itemSearch.setAssociateTag(amazonAssociatesWebServiceAccount.getAssociateTag());
 		ItemSearchRequest itemSearchRequest = new ItemSearchRequest();
 		itemSearchRequest.setSearchIndex(searchIndex);
+        itemSearchRequest.setSort("salesrank");
+        if(browseNode!=null)
+            itemSearchRequest.setBrowseNode(browseNode);
 		itemSearchRequest.getResponseGroup().addAll(responseGroups);
 		itemSearchRequest.setKeywords(keywords);
-		itemSearchRequest.setMerchantId("Amazon");
+		itemSearchRequest.setMerchantId("All");
 		itemSearchRequest.setItemPage(BigInteger.valueOf(pageNumber));
 
 		itemSearch.setShared(itemSearchRequest);
